@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - print _putchar
  * is written by Pury
@@ -6,6 +7,7 @@
  */
 
 int main(void)
+
 {
 _putchar('_');
 _putchar('p');
