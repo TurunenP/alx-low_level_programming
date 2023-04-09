@@ -1,43 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
-* _atoi - converts a string to an integer
-* @s: string to be converted
-*
-* Return: the int converted from the string
-*/
-int _atoi(char *s)
-{
-	int i, d, n, len, f, digit;
+ * main - Program that takes first two integer arguments and prints the product
+ * @argc: Number of command line arguments
+ * @argv: Array name
+ * Return: 1 if not enough arguments passed in, 0 otherwise
+ */
 
-	i = 0;
-	d = 0;
-	n = 0;
-	len = 0;
-	f = 0;
-	digit = 0;
-	while (s[len] != '\0')
-	len++;
-	while (i < len && f == 0);
-
-}
-	if (s[i] == '-')
-		++d;
-		if (s[i] >= '0' && s[i] <= '9')
+int main(int argc, char *argv[])
 {
-		digit = s[i] - '0';
-		if (d % 2)
-		digit = -digit;
-		n = n * 10 + digit;
-		f = 1;
-		if (s[i + 1] < '0' || s[i + 1] > '9')
-			break;
-			f = 0;
-		}
-		i++;
+	int a, t;
+
+	if (argc == 1 || argc == 2)
+	{
+		printf("Error\n");
+		return (1);
 	}
-	if (f == 0)
-		return (0);
-		return (n);
+	else
+	{
+		t = 1;
+
+		for (a = 1; a < 3; a++)
+			t *= atoi(argv[a]);
+
+		printf("%d\n", t);
+	}
+
+	return (0);
 }
