@@ -22,16 +22,16 @@ void print_all(const char * const format, ...)
 		{
 			switch (format[x])
 			{
-				case 'a':
+				case 'c':
 					printf("%s%c", sep, va_arg(list, int));
 					break;
 				case 'x':
 					printf("%s%d", sep, va_arg(list, int));
 					break;
-				case 't':
+				case 'f':
 					printf("%s%f", sep, va_arg(list, double));
 					break;
-				case 'z':
+				case 's':
 					str = va_arg(list, char *);
 					if (!str)
 						str = "(nil)";
