@@ -2,6 +2,7 @@
 
 /**
  * print_binary - display binary representation of a decimal number
+ *
  * @r: the decimal number to be displayed in binary form
  */
 void print_binary(unsigned long int r)
