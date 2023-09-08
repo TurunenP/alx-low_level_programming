@@ -2,28 +2,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *generate_buf(char *file);
-void shut_file(int df);
+char *create_buffer(char *file);
+void close_file(int fd);
 
 /**
- * generate_buffer - Reserves a memory of 1024 bytes for a buffer.
+ * build_buffer - Reserves a memory of 1024 bytes for a buffer.
  * @name: Specifies name of file that buffer is storing chars for.
  * Return: Gives a pointer to the freshly allocated buffer
  */
-char *generate_buf(char *name)
+char *build_buffer(char *name)
 {
-	char *buf;
+	char *buffer;
 
-	buf = malloc(sizeof(char) * 1024);
+	buffer = malloc(sizeof(char) * 1024);
 
-	if (buf == NULL)
+	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO,
-			"Error: Can't write to %s\n", file);
+			"Error: Can't write to %s\n", name);
 		exit(99);
 	}
 
-	return (buf);
+	return (buffer);
 }
 
 /**
@@ -32,19 +32,19 @@ char *generate_buf(char *name)
  */
 void shut_file(int df)
 {
-	int t;
+	int c;
 
-	t = close(df);
+	c = close(df);
 
-	if (t == -1)
+	if (c == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close df %d\n", df);
+		dprintf(STDERR_FILENO, "Error: Can't shut df %d\n", df);
 		exit(100);
 	}
 }
 
 /**
- * major - Copies the contents of a file to a different file.
+ * main - Copies the contents of a file to a different file.
  * @ac: The number of args passed to the program.
  * @av: An array of arguments strings
  * Return: 0 on success.
@@ -54,10 +54,10 @@ void shut_file(int df)
  * Exits with code 99 if destination cannot be created
  * Exits with code 100 if there are issues closing file_from or file_to
  */
-int major(int ac, char *av[])
+int main(int ac, char *av[])
 {
-	int from, to, x, y;
-	char *buf;
+	int from, to, r, w;
+	char *buffer;
 
 	if (ac != 3)
 	{
@@ -65,35 +65,35 @@ int major(int ac, char *av[])
 		exit(97);
 	}
 
-	buf = generate_buffer(av[2]);
+	buffer = build_buffer(av[2]);
 	from = open(av[1], O_RDONLY);
-	x = read(from, buf, 1024);
+	r = read(from, buffer, 1024);
 	to = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
-		if (from == -1 || x == -1)
+		if (from == -1 || r == -1)
 		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't read from file %s\n", av[1]);
-			free(buf);
+			free(buffer);
 			exit(98);
 		}
 
-		y = write(to, buf, x);
-		if (to == -1 || y == -1)
+		w = write(to, buffer, r);
+		if (to == -1 || w == -1)
 		{
 			dprintf(STDERR_FILENO,
 				"Error: Can't write to %s\n", av[2]);
-			free(buf);
+			free(buffer);
 			exit(99);
 		}
 
-		x = read(from, buf, 1024);
+		r = read(from, buffer, 1024);
 		to = open(av[2], O_WRONLY | O_APPEND);
 
-	} while (x > 0);
+	} while (r > 0);
 
-	free(buf);
+	free(buffer);
 	shut_file(from);
 	shut_file(to);
 
