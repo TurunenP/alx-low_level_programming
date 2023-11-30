@@ -7,7 +7,7 @@ void close_file(int fd);
 
 /**
  * build_buffer - Reserves a memory of 1024 bytes for a buffer.
- * @name: Specifies name of file that buffer is storing chars for.
+ * @name: Specifies name of file
  * Return: Gives a pointer to the freshly allocated buffer
  */
 char *build_buffer(char *name)
@@ -47,8 +47,7 @@ void shut_file(int df)
  * main - Copies the contents of a file to a different file.
  * @ac: The number of args passed to the program.
  * @av: An array of arguments strings
- * Return: 0 on success.
- *
+ * Return: 0 on success
  * Description: Exits with code 97 if argument is incorrect
  * Exits with code 98 if args is inaccesible
  * Exits with code 99 if destination cannot be created

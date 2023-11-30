@@ -2,7 +2,6 @@
 
 Tasks
 0. Tread lightly, she is near
-mandatory
 Score: 0.0% (Checks completed: 0.0%)
 Write a function that reads a text file and prints it to the POSIX standard output.
 
@@ -14,7 +13,6 @@ if filename is NULL return 0
 if write fails or does not write the expected amount of bytes, return 0
 
 1. Under the snow
-mandatory
 Score: 0.0% (Checks completed: 0.0%)
 Create a function that creates a file.
 
@@ -27,8 +25,7 @@ if filename is NULL return -1
 if text_content is NULL create an empty file
 
 2. Speak gently, she can hear
-mandatory
-Score: 0.0% (Checks completed: 0.0%)
+score: 0.0% (Checks completed: 0.0%)
 Write a function that appends text at the end of a file.
 
 Prototype: int append_text_to_file(const char *filename, char *text_content);
@@ -39,7 +36,6 @@ If filename is NULL return -1
 If text_content is NULL, do not add anything to the file. Return 1 if the file exists and -1 if the file does not exist or if you do not have the required permissions to write the file
 
 3. cp
-mandatory
 Score: 0.0% (Checks completed: 0.0%)
 Write a program that copies the content of a file to another file.
 
