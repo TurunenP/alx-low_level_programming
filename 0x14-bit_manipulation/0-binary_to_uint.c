@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * binary_to_uint
  * @b: string for binary number

@@ -27,8 +27,8 @@ char *build_buffer(char *name)
 }
 
 /**
- * shut_file - Closes file descriptors
- * df: The file descriptor to be closed.
+ * shut_file - Closes file descriptors.
+ * @df: The file descriptor to be closed.
  */
 void shut_file(int df)
 {
